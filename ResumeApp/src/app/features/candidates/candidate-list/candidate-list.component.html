@@ -1,0 +1,60 @@
+<table mat-table [dataSource]="candidates" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let candidate"> {{candidate.id}} </td>
+    </ng-container>
+  
+    <!-- <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let candidate"> {{candidate.firstName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let candidate"> {{candidate.lastName}} </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef> Full Name </th>
+      <td mat-cell *matCellDef="let candidate"> {{candidate.fullName}} </td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let candidate"> {{candidate.email}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="mobile">
+      <th mat-header-cell *matHeaderCellDef> Mobile </th>
+      <td mat-cell *matCellDef="let candidate"> {{candidate.mobile}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="degree">
+      <th mat-header-cell *matHeaderCellDef> Degree </th>
+      <td mat-cell *matCellDef="let candidate"> {{candidate.degreeName}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="cv">
+      <th mat-header-cell *matHeaderCellDef> CV </th>
+      <td mat-cell *matCellDef="let candidate">
+        <button mat-button color="primary" *ngIf="candidate.cv" (click)="downloadCV(candidate)">
+          <mat-icon>download</mat-icon> Download CV
+        </button>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let candidate">
+        <button mat-button color="primary" (click)="edit(candidate.id)">Edit</button>
+        <button mat-button color="warn" (click)="delete(candidate.id)">Delete</button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  
+  <button mat-fab color="primary" (click)="openForm()">+</button>
